@@ -13,11 +13,9 @@ jobs: # Jobs defined in the workflow
       uses: actions/checkout@v3
    
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-session-token: ${{secrets.AWS_SESSION_TOKEN}}
+        role-to-assume: arn:aws:iam::947695616581:role/aws-service-role/sso.amazonaws.com/AWSServiceRoleForSSO
         aws-region: us-east-1
 
     - name: Create CloudFormation Stack
@@ -25,4 +23,4 @@ jobs: # Jobs defined in the workflow
       with:
         name: udatest
         template: udatest.yml
-        
+        no-fail-on-empty-changeset: "1"

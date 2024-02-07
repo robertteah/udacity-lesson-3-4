@@ -12,10 +12,10 @@ jobs: # Jobs defined in the workflow
     - name: Checkout
       uses: actions/checkout@v3
    
-    - name: Configure AWS credentials
+    - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::947695616581:role/aws-service-role/sso.amazonaws.com/AWSServiceRoleForSSO
+        role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
         aws-region: us-east-1
 
     - name: Create CloudFormation Stack
